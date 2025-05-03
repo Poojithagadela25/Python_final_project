@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+</head>
+<body>
+    <h1>House Price Prediction</h1>
+    <form id="predictForm">
+        <label for="YearBuilt">Year Built:</label>
+        <input type="number" id="YearBuilt" name="YearBuilt" required><br><br>
+
+        <label for="OverallQual">Overall Quality:</label>
+        <input type="number" id="OverallQual" name="OverallQual" required><br><br>
+
+        <label for="TotalBsmtSF">Total Basement Area (SF):</label>
+        <input type="number" id="TotalBsmtSF" name="TotalBsmtSF" required><br><br>
+
+        <label for="GrLivArea">Ground Living Area (SF):</label>
+        <input type="number" id="GrLivArea" name="GrLivArea" required><br><br>
+
+        <label for="FullBath">Full Bathrooms:</label>
+        <input type="number" id="FullBath" name="FullBath" required><br><br>
+
+        <label for="HalfBath">Half Bathrooms:</label>
+        <input type="number" id="HalfBath" name="HalfBath" required><br><br>
+
+        <label for="GarageCars">Garage Cars:</label>
+        <input type="number" id="GarageCars" name="GarageCars" required><br><br>
+
+        <label for="GarageArea">Garage Area (SF):</label>
+        <input type="number" id="GarageArea" name="GarageArea" required><br><br>
+
+        <label for="TotRmsAbvGrd">Total Rooms Above Grade:</label>
+        <input type="number" id="TotRmsAbvGrd" name="TotRmsAbvGrd" required><br><br>
+
+        <label for="Fireplaces">Fireplaces:</label>
+        <input type="number" id="Fireplaces" name="Fireplaces" required><br><br>
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    <h2>Predicted House Price:</h2>
+    <div id="predictionResult"></div>
+
+    <script>
+        const form = document.getElementById("predictForm");
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            const response = await fetch("http://127.0.0.1:8000/predict", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+            document.getElementById("predictionResult").textContent = "Predicted Price: $" + result.PredictedPrice.toLocaleString();
+        };
+    </script>
+</body>
+</html>

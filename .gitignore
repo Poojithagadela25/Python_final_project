@@ -1,0 +1,46 @@
+_pycache_/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VS Code settings
+.vscode/
+
+# Mac system files
+.DS_Store
+
+# Logs
+*.log
+
+# Data files
+data/*.csv
+!data/AmesHousing.csv         # Track original dataset only
+
+# Model binaries
+model/*.pkl
+
+# Cache and metadata
+*.cache
+*.pkl
+*.joblib
+*.npy
+*.npz
+
+# Coverage reports
+htmlcov/
+coverage.xml
+.cache/
+
+# Pytest cache
+.pytest_cache/
