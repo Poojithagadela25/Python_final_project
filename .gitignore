@@ -1,46 +1,36 @@
-_pycache_/
-*.py[cod]
-*$py.class
+# Ignore processed datasets except raw one
+data/cleaned_ameshousing.csv
+data/engineered_ameshousing.csv
 
-# C extensions
+# Ignore cache and temp files
+__pycache__/
+*.py[cod]
 *.so
 
-# Virtual environment
-venv/
-ENV/
-env/
-.venv/
-
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints
-
-# VS Code settings
-.vscode/
-
-# Mac system files
-.DS_Store
-
-# Logs
-*.log
-
-# Data files
-data/*.csv
-!data/AmesHousing.csv         # Track original dataset only
-
-# Model binaries
-model/*.pkl
-
-# Cache and metadata
-*.cache
-*.pkl
-*.joblib
-*.npy
-*.npz
-
-# Coverage reports
+# Ignore testing or coverage artifacts
 htmlcov/
 coverage.xml
 .cache/
+pytest_cache/
 
-# Pytest cache
-.pytest_cache/
+# Ignore model binaries
+model/*.pkl
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore system files
+.DS_Store
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore venv and editor folders
+.venv/
+venv/
+.vscode/
+
+# Ignore app folder (since B is not doing API/Frontend)
+app/
+templates/
